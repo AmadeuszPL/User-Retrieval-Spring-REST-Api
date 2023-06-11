@@ -1,10 +1,10 @@
-package com.amadeusz.userretrival;
+package com.amadeusz.userretrieval;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserretrivalApplicationTests {
+class UserRetrievalApplicationTests {
 
 	@Test
 	void contextLoads() {

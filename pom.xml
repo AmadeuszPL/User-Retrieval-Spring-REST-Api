@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amadeusz</groupId>
-	<artifactId>userretrival</artifactId>
+	<artifactId>userretrieval</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>userretrival</name>
 	<description>Project to retrieve data from one rest endpoint and return it in own API rest endpoint.</description>
