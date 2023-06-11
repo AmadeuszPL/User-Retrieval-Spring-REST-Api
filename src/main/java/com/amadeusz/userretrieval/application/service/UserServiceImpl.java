@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final RestTemplate restTemplate;
 
     @Override
-    public User retrieveUser(@NonNull String login) {
+    public User retrieveUserByLogin(@NonNull String login) {
         String userRetrievalByLoginUrl = USER_RETRIEVAL_RESOURCE_URL + login;
         UserDto retrievedUserDto = restTemplate.getForObject(userRetrievalByLoginUrl, UserDto.class);
         return userMapper.map(retrievedUserDto);

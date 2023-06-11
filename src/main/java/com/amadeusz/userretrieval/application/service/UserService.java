@@ -5,5 +5,5 @@ import lombok.NonNull;
 
 public interface UserService {
 
-    User retrieveUser(@NonNull String login);
+    User retrieveUserByLogin(@NonNull String login);
 }
