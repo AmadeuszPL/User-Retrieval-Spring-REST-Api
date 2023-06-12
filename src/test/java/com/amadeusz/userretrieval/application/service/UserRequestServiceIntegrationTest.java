@@ -1,8 +1,8 @@
 package com.amadeusz.userretrieval.application.service;
 
 import com.amadeusz.userretrieval.application.model.User;
-import com.amadeusz.userretrieval.infrastructure.UserRequestJpaRepository;
-import com.amadeusz.userretrieval.infrastructure.entity.UserRequest;
+import com.amadeusz.userretrieval.infrastructure.repository.UserRequestJpaRepository;
+import com.amadeusz.userretrieval.infrastructure.repository.entity.UserRequest;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

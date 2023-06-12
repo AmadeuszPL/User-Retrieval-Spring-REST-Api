@@ -1,4 +1,4 @@
-package com.amadeusz.userretrieval.infrastructure.entity;
+package com.amadeusz.userretrieval.infrastructure.repository.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
