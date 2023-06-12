@@ -73,3 +73,6 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+#trace db h2 file
+*.trace.db
