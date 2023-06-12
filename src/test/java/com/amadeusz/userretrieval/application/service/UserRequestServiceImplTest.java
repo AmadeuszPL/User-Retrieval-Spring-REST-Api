@@ -48,7 +48,7 @@ class UserRequestServiceImplTest {
     @Test
     void shouldRetrieveUserByLogin() {
         UserDto userDto =
-                prepareExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_SOME_FOLLOWERS, USER_TO_BE_RETRIEVED_SOME_PUBLIC_REPOS);
+                generateExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_SOME_FOLLOWERS, USER_TO_BE_RETRIEVED_SOME_PUBLIC_REPOS);
         when(restTemplateMock.getForObject(USER_RETRIEVAL_RESOURCE_URL + USER_TO_BE_RETRIEVED_LOGIN, UserDto.class))
                 .thenReturn(userDto);
 
@@ -76,7 +76,7 @@ class UserRequestServiceImplTest {
     @Test
     void shouldRetrieveUserByLogin_withNoFollowers() {
         UserDto userDto =
-                prepareExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_NO_FOLLOWERS, USER_TO_BE_RETRIEVED_SOME_PUBLIC_REPOS);
+                generateExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_NO_FOLLOWERS, USER_TO_BE_RETRIEVED_SOME_PUBLIC_REPOS);
         when(restTemplateMock.getForObject(USER_RETRIEVAL_RESOURCE_URL + USER_TO_BE_RETRIEVED_LOGIN, UserDto.class))
                 .thenReturn(userDto);
 
@@ -104,7 +104,7 @@ class UserRequestServiceImplTest {
     @Test
     void shouldRetrieveUserByLogin_withNoPublicRepos() {
         UserDto userDto =
-                prepareExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_SOME_FOLLOWERS, USER_TO_BE_RETRIEVED_NO_PUBLIC_REPOS);
+                generateExpectedUserDtoReturnedByRestTemplate(USER_TO_BE_RETRIEVED_SOME_FOLLOWERS, USER_TO_BE_RETRIEVED_NO_PUBLIC_REPOS);
         when(restTemplateMock.getForObject(USER_RETRIEVAL_RESOURCE_URL + USER_TO_BE_RETRIEVED_LOGIN, UserDto.class))
                 .thenReturn(userDto);
 
@@ -129,7 +129,7 @@ class UserRequestServiceImplTest {
                         RETRIEVED_USER_WITH_NO_PUBLIC_REPOS_CALCULATION_RESULT);
     }
 
-    private static UserDto prepareExpectedUserDtoReturnedByRestTemplate(long userToBeRetrievedSomeFollowers, int userToBeRetrievedNoPublicRepos) {
+    private static UserDto generateExpectedUserDtoReturnedByRestTemplate(long userToBeRetrievedSomeFollowers, int userToBeRetrievedNoPublicRepos) {
         return new UserDto(USER_TO_BE_RETRIEVED_ID,
                 USER_TO_BE_RETRIEVED_LOGIN,
                 USER_TO_BE_RETRIEVED_TYPE,
@@ -150,8 +150,8 @@ class UserRequestServiceImplTest {
     @Test
     void shouldRegisterUserRetrieval() {
         ArgumentCaptor<UserRequest> actuallySavedUserRequest = ArgumentCaptor.forClass(UserRequest.class);
-        User user = prepareUserToBeRetrieved();
-        Optional<UserRequest> optionalUserRequest = prepareOptionalUserRequest(user);
+        User user = generateUserToBeRetrieved();
+        Optional<UserRequest> optionalUserRequest = generateOptionalUserRequest(user);
         when(userRequestJpaRepositoryMock.findById(USER_TO_BE_RETRIEVED_LOGIN))
                 .thenReturn(optionalUserRequest);
 
@@ -169,7 +169,7 @@ class UserRequestServiceImplTest {
     @Test
     void shouldRegisterUserRetrieval_thatWasNotRegisteredBefore() {
         ArgumentCaptor<UserRequest> actuallySavedUserRequest = ArgumentCaptor.forClass(UserRequest.class);
-        User user = prepareUserToBeRetrieved();
+        User user = generateUserToBeRetrieved();
         Optional<UserRequest> optionalUserRequest = Optional.empty();
         when(userRequestJpaRepositoryMock.findById(USER_TO_BE_RETRIEVED_LOGIN))
                 .thenReturn(optionalUserRequest);
@@ -191,14 +191,14 @@ class UserRequestServiceImplTest {
                 .hasMessage("user is marked non-null but is null");
     }
 
-    private static Optional<UserRequest> prepareOptionalUserRequest(User user) {
+    private static Optional<UserRequest> generateOptionalUserRequest(User user) {
         UserRequest userRequestFromRepository = new UserRequest();
         userRequestFromRepository.setRequestCount(4);
         userRequestFromRepository.setLogin(user.login());
         return Optional.of(userRequestFromRepository);
     }
 
-    private static User prepareUserToBeRetrieved() {
+    private static User generateUserToBeRetrieved() {
         return new User(USER_TO_BE_RETRIEVED_ID,
                 USER_TO_BE_RETRIEVED_LOGIN,
                 USER_TO_BE_RETRIEVED_NAME,

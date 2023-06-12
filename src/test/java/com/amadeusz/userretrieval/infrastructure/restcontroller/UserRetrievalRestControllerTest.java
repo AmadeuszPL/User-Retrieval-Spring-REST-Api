@@ -42,7 +42,8 @@ class UserRetrievalRestControllerTest {
                 .extracting(ExceptionResponse::getError,
                         ExceptionResponse::getDescription)
                 .containsExactly("NotFound",
-                        "404 Not Found: \"{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/reference/users#get-a-user\"}\"");
+                        "404 Not Found: \"{\"message\":\"Not Found\",\"documentation_url\":\"" +
+                                "https://docs.github.com/rest/reference/users#get-a-user\"}\"");
     }
 
 }
