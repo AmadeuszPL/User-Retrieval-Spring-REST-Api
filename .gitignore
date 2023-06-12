@@ -75,4 +75,4 @@ buildNumber.properties
 .classpath
 
 #trace db h2 file
-*.trace.db
+*.db
