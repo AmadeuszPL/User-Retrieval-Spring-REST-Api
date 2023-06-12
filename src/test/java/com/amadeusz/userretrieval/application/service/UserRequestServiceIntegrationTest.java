@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-class UserRequestServiceImplIntegrationTest {
+class UserRequestServiceIntegrationTest {
 
     private static final String USER_TO_BE_RETRIEVED_LOGIN = "octocat";
     private static final Long USER_TO_BE_RETRIEVED_ID = 583231L;

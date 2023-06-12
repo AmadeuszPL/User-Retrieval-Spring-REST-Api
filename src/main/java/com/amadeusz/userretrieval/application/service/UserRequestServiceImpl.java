@@ -32,7 +32,8 @@ public class UserRequestServiceImpl implements UserRequestService {
     @Override
     public void registerUserRetrieval(@NonNull User user) {
         Optional<UserRequest> userRequestInRepository = userRequestJpaRepository.findById(user.login());
-        UserRequest userRequest = userRequestInRepository.map(uR -> new UserRequest(uR.getLogin(), uR.getRequestCount() + 1))
+        UserRequest userRequest = userRequestInRepository
+                .map(uR -> new UserRequest(uR.getLogin(), uR.getRequestCount() + 1))
                 .orElseGet(() -> new UserRequest(user.login(), 1));
         userRequestJpaRepository.save(userRequest);
     }
