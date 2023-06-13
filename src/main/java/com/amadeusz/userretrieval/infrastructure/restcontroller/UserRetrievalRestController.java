@@ -3,7 +3,6 @@ package com.amadeusz.userretrieval.infrastructure.restcontroller;
 import com.amadeusz.userretrieval.application.model.User;
 import com.amadeusz.userretrieval.application.service.UserRequestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1.0.0/users")
 public class UserRetrievalRestController {
 
-    @Autowired
-    private UserRequestService userRequestService;
+    private final UserRequestService userRequestService;
 
     @GetMapping("/{login}")
     @ResponseBody
